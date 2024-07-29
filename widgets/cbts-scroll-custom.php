@@ -92,6 +92,7 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
                 <div class="cbtse-gostan-scrolling-e-single-content-area">
                     <h2>This is content here from first heading 5</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
                 </div><!--Single Scrolling Content-->
             </div>
         </div>
@@ -99,11 +100,14 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
         <div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime atque ut beatae quaerat. Itaque natus blanditiis aliquid provident distinctio placeat quis dolorem alias harum quisquam quo saepe dignissimos vero assumenda illo, non commodi maxime autem! Distinctio vel excepturi quidem eum, nesciunt deleniti ratione quo assumenda laborum dolorem? Illo rerum similique harum animi non inventore consectetur ut, exercitationem consequatur? Ipsum maxime impedit ad, quae dignissimos reprehenderit iure consequatur et atque aperiam voluptatem, voluptates quisquam corporis dolor eaque inventore! Praesentium iusto accusantium, soluta dolorum tempore cumque dolor provident pariatur et saepe consequuntur. Ea cumque ipsa quis nemo placeat quos mollitia id illo ullam officia, optio incidunt qui expedita, accusantium eos sequi voluptas? Soluta ex beatae, maiores, dolores voluptatum porro nihil molestiae, sunt eligendi tempora facere perspiciatis aperiam. Ipsam sequi voluptas qui a porro praesentium delectus. Nobis quas consequatur, quisquam fugit aut minima possimus recusandae eaque autem, iste laboriosam, vel neque magnam sed.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime atque ut beatae quaerat. Itaque natus blanditiis aliquid provident distinctio placeat quis dolorem alias harum quisquam quo saepe dignissimos vero assumenda illo, non commodi maxime autem! Distinctio vel excepturi quidem eum, nesciunt deleniti ratione quo assumenda laborum dolorem? Illo rerum similique harum animi non inventore consectetur ut, exercitationem consequatur? Ipsum maxime impedit ad, quae dignissimos reprehenderit iure consequatur et atque aperiam voluptatem, voluptates quisquam corporis dolor eaque inventore! Praesentium iusto accusantium, soluta dolorum tempore cumque dolor provident pariatur et saepe consequuntur. Ea cumque ipsa quis nemo placeat quos mollitia id illo ullam officia, optio incidunt qui expedita, accusantium eos sequi voluptas? Soluta ex beatae, maiores, dolores voluptatum porro nihil molestiae, sunt eligendi tempora facere perspiciatis aperiam. Ipsam sequi voluptas qui a porro praesentium delectus. Nobis quas consequatur, quisquam fugit aut minima possimus recusandae eaque autem, iste laboriosam, vel neque magnam sed.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime atque ut beatae quaerat. Itaque natus blanditiis aliquid provident distinctio placeat quis dolorem alias harum quisquam quo saepe dignissimos vero assumenda illo, non commodi maxime autem! Distinctio vel excepturi quidem eum, nesciunt deleniti ratione quo assumenda laborum dolorem? Illo rerum similique harum animi non inventore consectetur ut, exercitationem consequatur? Ipsum maxime impedit ad, quae dignissimos reprehenderit iure consequatur et atque aperiam voluptatem, voluptates quisquam corporis dolor eaque inventore! Praesentium iusto accusantium, soluta dolorum tempore cumque dolor provident pariatur et saepe consequuntur. Ea cumque ipsa quis nemo placeat quos mollitia id illo ullam officia, optio incidunt qui expedita, accusantium eos sequi voluptas? Soluta ex beatae, maiores, dolores voluptatum porro nihil molestiae, sunt eligendi tempora facere perspiciatis aperiam. Ipsam sequi voluptas qui a porro praesentium delectus. Nobis quas consequatur, quisquam fugit aut minima possimus recusandae eaque autem, iste laboriosam, vel neque magnam sed.</p>
         </div>
 
 
     
         <script>
+
+
 jQuery(document).ready(function($) {
     const container = $('.cbtse-gostan-scrolling-effect-contents-area');
     const items = $('.cbtse-gostan-scrolling-e-single-content-area');
@@ -121,7 +125,7 @@ jQuery(document).ready(function($) {
         items.each(function(index) {
             const item = $(this);
             const itemTop = item.offset().top - containerTop;
-            const topOffset = (index + 1) * 30; // Add a gap that increases with each element
+            const topOffset = index * 30; // The first element gets 0, the second 30px, etc.
 
             if (itemTop <= topOffset && itemTop + item.outerHeight() >= topOffset) {
                 item.addClass('cbtse-gostan-position-fixed');
@@ -136,7 +140,7 @@ jQuery(document).ready(function($) {
 
         // Adjust container height to accommodate the last item
         if (!heightAdjusted && containerScrollTop + containerHeight >= containerScrollHeight - lastItemHeight) {
-            container.css('height', lastItemHeight + 200 + 'px').css('padding-bottom', 0);
+            container.css('height', lastItemHeight + 170 + 'px').css('padding-bottom', 0);
             heightAdjusted = true;
         }
 
@@ -147,6 +151,7 @@ jQuery(document).ready(function($) {
         }
     });
 });
+
 </script>
 
 <?php
