@@ -48,7 +48,6 @@ body {
 
 
 
-
 .cbtse-gostan-scrolling-effect-contents-area * {
     color: #fff;
 }
@@ -96,6 +95,5 @@ body {
 
 .cbtse-gostan-position-fixed {
     position: sticky;
-    top: 0;
 }
 

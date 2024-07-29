@@ -104,7 +104,6 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
 
     
         <script>
-
 jQuery(document).ready(function($) {
     const container = $('.cbtse-gostan-scrolling-effect-contents-area');
     const items = $('.cbtse-gostan-scrolling-e-single-content-area');
@@ -122,19 +121,22 @@ jQuery(document).ready(function($) {
         items.each(function(index) {
             const item = $(this);
             const itemTop = item.offset().top - containerTop;
+            const topOffset = (index + 1) * 30; // Add a gap that increases with each element
 
-            if (itemTop <= 0 && itemTop + item.outerHeight() >= 0) {
+            if (itemTop <= topOffset && itemTop + item.outerHeight() >= topOffset) {
                 item.addClass('cbtse-gostan-position-fixed');
+                item.css('top', topOffset + 'px'); // Apply the calculated top offset
                 item.css('z-index', 100 + index); // Ensures the current item is on top
             } else {
                 item.removeClass('cbtse-gostan-position-fixed');
+                item.css('top', ''); // Reset top value when not fixed
                 item.css('z-index', 99 + index); // Ensures the item is in view
             }
         });
 
         // Adjust container height to accommodate the last item
         if (!heightAdjusted && containerScrollTop + containerHeight >= containerScrollHeight - lastItemHeight) {
-            container.css('height', lastItemHeight + 50 + 'px').css('padding-bottom', 0);
+            container.css('height', lastItemHeight + 200 + 'px').css('padding-bottom', 0);
             heightAdjusted = true;
         }
 
