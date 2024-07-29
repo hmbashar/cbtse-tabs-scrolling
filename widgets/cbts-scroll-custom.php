@@ -60,36 +60,37 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
 
         <div class="cbtse-gostan-scrolling-effect-area">
             <div class="cbtse-gostan-scrolling-effect-menu-area">
-                <ul>
-                    <li><a href="">Menu 1</a></li>
-                    <li><a href="">Menu 2</a></li>
-                    <li><a href="">Menu 3</a></li>
-                    <li><a href="">Menu 4</a></li>
+                <ul style="position:fixed;top:100px;width:100px;background-color:green; display:flex;justify-content:center;gap:50px;z-index:500;align-items:center;list-style:none;">
+                    <li><a href="#content-1">Menu 1</a></li>
+                    <li><a href="#content-2">Menu 2</a></li>
+                    <li><a href="#content-3">Menu 3</a></li>
+                    <li><a href="#content-4">Menu 4</a></li>
+                    <li><a href="#content-5">Menu 4</a></li>
                 </ul>
             </div>
             <div class="cbtse-gostan-scrolling-effect-contents-area">
                 <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area">
+                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-1">
                     <h2>This is content here from first heading 1</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
                 </div><!--Single Scrolling Content-->
                 <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area">
+                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-2">
                     <h2>This is content here from first heading 2</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
                 </div><!--Single Scrolling Content-->
                 <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area">
+                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-3">
                     <h2>This is content here from first heading 3</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
                 </div><!--Single Scrolling Content-->
                 <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area">
+                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-4">
                     <h2>This is content here from first heading 4</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
                 </div><!--Single Scrolling Content-->
                 <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area">
+                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-5">
                     <h2>This is content here from first heading 5</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
