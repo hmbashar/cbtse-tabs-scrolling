@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+}
+.tab-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.cbtse-slideup-contents {
+  position: relative;
+}
+
+#cbtse-cbtse-slideup-content-wrapper {
+  background-color: aliceblue;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.container {
+  max-width: 1400px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.cbtse-slideup-content:not(:first-child) {
+  position: absolute;
+  top: 0;
+}
+.cbtse-slideup-content {
+  background-color: antiquewhite;
+}
+.cbtse-slideup-content:nth-child(2) {
+  background-color: aqua;
+}
+.cbtse-slideup-content:nth-child(3) {
+  background-color: rgb(255, 36, 149);
+}
+.cbtse-slideup-content:nth-child(4) {
+  background-color: rgb(255, 169, 40);
+}
+
+
+
+
+
+.cbtse-gostan-scrolling-effect-contents-area * {
+    color: #fff;
+}
+
+.cbtse-gostan-scrolling-effect-contents-area {
+    position: relative;
+    overflow-y: scroll; /* Use scroll to enable scrolling without showing scrollbar */
+    height: calc(100vh - 50px);
+    padding-bottom: 100px;
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.cbtse-gostan-scrolling-effect-contents-area::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.cbtse-gostan-scrolling-effect-contents-area {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.cbtse-gostan-scrolling-e-single-content-area {
+    background-color: #FECE32;
+    padding: 30px;
+    border-radius: 50px;
+    margin-bottom: 50px;    
+    position: relative;
+    transition: z-index 0.3s ease;
+    z-index: 1;
+}
+
+.cbtse-gostan-scrolling-e-single-content-area:nth-child(2) {
+    background-color: #FEAF77;
+}
+.cbtse-gostan-scrolling-e-single-content-area:nth-child(3) {
+    background-color: #92ABFC;
+}
+.cbtse-gostan-scrolling-e-single-content-area:nth-child(4) {
+    background-color: #BA80E6;
+}
+.cbtse-gostan-scrolling-e-single-content-area:nth-child(5) {
+    background-color: #3A1952;
+}
+
+.cbtse-gostan-position-fixed {
+    position: sticky;
+    top: 0;
+}
