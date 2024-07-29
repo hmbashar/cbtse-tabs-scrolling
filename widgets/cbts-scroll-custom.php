@@ -107,11 +107,13 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
     
         <script>
 
-
 jQuery(document).ready(function($) {
     const container = $('.cbtse-gostan-scrolling-effect-contents-area');
     const items = $('.cbtse-gostan-scrolling-e-single-content-area');
     const originalHeight = container.height();
+    const gap = 30;
+    const ratio = 4;
+    const extraHeight = gap * ratio;
     const lastItem = items.last();
     const lastItemHeight = lastItem.outerHeight();
     let heightAdjusted = false;
@@ -124,10 +126,10 @@ jQuery(document).ready(function($) {
 
         items.each(function(index) {
             const item = $(this);
-            const itemTop = item.offset().top - containerTop;
-            const topOffset = index * 30; // The first element gets 0, the second 30px, etc.
+            const topOffset = index * gap; // The first element gets 0, the second 30px, etc.
+            const itemOffsetTop = item.offset().top - containerTop;
 
-            if (itemTop <= topOffset && itemTop + item.outerHeight() >= topOffset) {
+            if (itemOffsetTop <= topOffset) {
                 item.addClass('cbtse-gostan-position-fixed');
                 item.css('top', topOffset + 'px'); // Apply the calculated top offset
                 item.css('z-index', 100 + index); // Ensures the current item is on top
@@ -140,7 +142,7 @@ jQuery(document).ready(function($) {
 
         // Adjust container height to accommodate the last item
         if (!heightAdjusted && containerScrollTop + containerHeight >= containerScrollHeight - lastItemHeight) {
-            container.css('height', lastItemHeight + 170 + 'px').css('padding-bottom', 0);
+            container.css('height', lastItemHeight + extraHeight + 50 + 'px').css('padding-bottom', 0);
             heightAdjusted = true;
         }
 
@@ -151,7 +153,6 @@ jQuery(document).ready(function($) {
         }
     });
 });
-
 </script>
 
 <?php
