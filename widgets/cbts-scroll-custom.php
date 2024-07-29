@@ -106,15 +106,22 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
         <script>
 
 jQuery(document).ready(function($) {
-    var container = $('.cbtse-gostan-scrolling-effect-contents-area');
-    var items = $('.cbtse-gostan-scrolling-e-single-content-area');
+    const container = $('.cbtse-gostan-scrolling-effect-contents-area');
+    const items = $('.cbtse-gostan-scrolling-e-single-content-area');
+    const originalHeight = container.height();
+    const lastItem = items.last();
+    const lastItemHeight = lastItem.outerHeight();
+    let heightAdjusted = false;
 
     container.on('scroll', function() {
-        var containerTop = container.offset().top;
+        const containerTop = container.offset().top;
+        const containerScrollTop = container.scrollTop();
+        const containerHeight = container.height();
+        const containerScrollHeight = container[0].scrollHeight;
 
         items.each(function(index) {
-            var item = $(this);
-            var itemTop = item.offset().top - containerTop;
+            const item = $(this);
+            const itemTop = item.offset().top - containerTop;
 
             if (itemTop <= 0 && itemTop + item.outerHeight() >= 0) {
                 item.addClass('cbtse-gostan-position-fixed');
@@ -124,6 +131,18 @@ jQuery(document).ready(function($) {
                 item.css('z-index', 99 + index); // Ensures the item is in view
             }
         });
+
+        // Adjust container height to accommodate the last item
+        if (!heightAdjusted && containerScrollTop + containerHeight >= containerScrollHeight - lastItemHeight) {
+            container.css('height', lastItemHeight + 50 + 'px').css('padding-bottom', 0);
+            heightAdjusted = true;
+        }
+
+        // Revert to original height when scrolling back to the top
+        if (heightAdjusted && containerScrollTop + containerHeight < containerScrollHeight - lastItemHeight) {
+            container.css('height', originalHeight).css('padding-bottom', '100px');
+            heightAdjusted = false;
+        }
     });
 });
 </script>

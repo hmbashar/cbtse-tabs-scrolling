@@ -46,6 +46,9 @@ body {
 
 
 
+
+
+
 .cbtse-gostan-scrolling-effect-contents-area * {
     color: #fff;
 }
@@ -54,7 +57,7 @@ body {
     position: relative;
     overflow-y: scroll; /* Use scroll to enable scrolling without showing scrollbar */
     height: calc(100vh - 50px);
-    padding-bottom: 100px;
+    padding-bottom: 100px; /* Initial padding */
 }
 
 /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
@@ -95,3 +98,4 @@ body {
     position: sticky;
     top: 0;
 }
+
