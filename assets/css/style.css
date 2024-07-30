@@ -48,6 +48,28 @@ body {
 
 
 
+.cbtse-gostan-scrolling-effect-menu-area ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  position: sticky;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.cbtse-gostan-scrolling-effect-area {
+  position: relative;
+}
+
+.cbtse-gostan-scrolling-effect-menu-area ul li a {
+  background-color: darkgrey;
+  display: block;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 5px;
+}
 .cbtse-gostan-scrolling-effect-contents-area * {
     color: #fff;
 }
