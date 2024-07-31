@@ -38,15 +38,15 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
         $repeater = new \Elementor\Repeater();
 
         $repeater->start_controls_tabs(
-			'scrolling_tabs'
-		);
+            'scrolling_tabs'
+        );
 
-		$repeater->start_controls_tab(
-			'scrolling_normal_tab',
-			[
-				'label' => esc_html__( 'Content', 'cbtse' ),
-			]
-		);
+        $repeater->start_controls_tab(
+            'scrolling_normal_tab',
+            [
+                'label' => esc_html__('Content', 'cbtse'),
+            ]
+        );
 
         $repeater->add_control(
             'scrolling_title',
@@ -59,33 +59,33 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
         );
 
 
-            // Fetch Elementor templates
-    $templates = \Elementor\Plugin::instance()->templates_manager->get_source( 'local' )->get_items();
-    $template_options = [ '' => 'Select Template' ];
-    if ( ! empty( $templates ) ) {
-        foreach ( $templates as $template ) {
-            $template_options[ $template['template_id'] ] = $template['title'];
+        // Fetch Elementor templates
+        $templates = \Elementor\Plugin::instance()->templates_manager->get_source('local')->get_items();
+        $template_options = ['' => 'Select Template'];
+        if (!empty($templates)) {
+            foreach ($templates as $template) {
+                $template_options[$template['template_id']] = $template['title'];
+            }
         }
-    }
 
-    $repeater->add_control(
-        'scrolling_template',
-        [
-            'label' => esc_html__('Template', 'cbtse'),
-            'type' => \Elementor\Controls_Manager::SELECT,
-            'options' => $template_options,
-            'default' => '',
-            'label_block' => true,
-        ]
-    );
+        $repeater->add_control(
+            'scrolling_template',
+            [
+                'label' => esc_html__('Template', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => $template_options,
+                'default' => '',
+                'label_block' => true,
+            ]
+        );
 
         $repeater->end_controls_tab();
         $repeater->start_controls_tab(
-			'scrolling_style_tab',
-			[
-				'label' => esc_html__( 'Style', 'cbtse' ),
-			]
-		);
+            'scrolling_style_tab',
+            [
+                'label' => esc_html__('Style', 'cbtse'),
+            ]
+        );
         $repeater->add_control(
             'list_color',
             [
@@ -98,7 +98,7 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
         );
         $repeater->end_controls_tab();
 
-		$repeater->end_controls_tabs();
+        $repeater->end_controls_tabs();
 
 
         $this->add_control(
@@ -120,107 +120,166 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'menu_style_section',
+            [
+                'label' => __('Menu Style', 'cbtse'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->start_controls_tabs('menu_style_tabs');
+
+        $this->start_controls_tab(
+            'menu_normal_tab',
+            [
+                'label' => __('Normal', 'cbtse'),
+            ]
+        );
+
+        $this->add_control(
+            'menu_background_color',
+            [
+                'label' => __('Background Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_text_color',
+            [
+                'label' => __('Text Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a' => 'color: {{VALUE}};',
+                ],
+            ]
+        ); 
+
+        $this->add_control(
+            'menu_padding',
+            [
+                'label' => __('Padding', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'menu_border',
+                'selector' => '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a',
+            ]
+        );
+
+        $this->add_control(
+            'menu_border_radius',
+            [
+                'label' => __('Border Radius', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'menu_hover_tab',
+            [
+                'label' => __('Hover', 'cbtse'),
+            ]
+        );
+
+        $this->add_control(
+            'menu_hover_background_color',
+            [
+                'label' => __('Background Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_hover_text_color',
+            [
+                'label' => __('Hover Text Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'menu_hover_border_color',
+            [
+                'label' => __('Hover Border Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
     }
 
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        ?>
-       
-        <div class="cbtse-gostan-scrolling-effect-area">
-            <div class="cbtse-gostan-scrolling-effect-menu-area">
-                <ul>
-                    <li><a href="#content-1">Menu 1</a></li>
-                    <li><a href="#content-2">Menu 2</a></li>
-                    <li><a href="#content-3">Menu 3</a></li>
-                    <li><a href="#content-4">Menu 4</a></li>
-                    <li><a href="#content-5">Menu 5</a></li>
-                </ul>
+        if (!empty($settings['scrolling_list'])): ?>
+            <div class="cbtse-gostan-scrolling-effect-area">
+                <div class="cbtse-gostan-scrolling-effect-menu-area">
+                    <ul>
+                        <?php foreach ($settings['scrolling_list'] as $index => $item):
+                            $menu_id = 'content-' . ($index + 1);
+                            ?>
+                            <li><a href="#<?php echo esc_attr($menu_id); ?>"><?php echo esc_html($item['scrolling_title']); ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <div class="cbtse-gostan-scrolling-effect-contents-area">
+                    <?php foreach ($settings['scrolling_list'] as $index => $item):
+                        $menu_id = 'content-' . ($index + 1);
+                        $template_id = $item['scrolling_template'];
+                        $template_content = $template_id ? \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($template_id) : '';
+                        ?>
+                        <!-- Single Scrolling Content -->
+                        <div class="cbtse-gostan-scrolling-e-single-content-area" id="<?php echo esc_attr($menu_id); ?>">
+                            <?php if ($template_content) {
+                                echo $template_content;
+                            } else { ?>
+                                <h2><?php echo esc_html($item['scrolling_title']); ?></h2>
+                                <p><?php echo esc_html__('No content available', 'cbtse'); ?></p>
+                            <?php } ?>
+                        </div><!-- Single Scrolling Content -->
+                    <?php endforeach; ?>
+                </div>
             </div>
-            <div class="cbtse-gostan-scrolling-effect-contents-area">
-                <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-1">
-                    <h2>This is content here from first heading 1</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum
-                        praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi
-                        reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis
-                        fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio
-                        possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt
-                        excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel
-                        cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum
-                        odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error
-                        consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus
-                        maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
-                </div><!--Single Scrolling Content-->
-                <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-2">
-                    <h2>This is content here from first heading 2</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum
-                        praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi
-                        reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis
-                        fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio
-                        possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt
-                        excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel
-                        cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum
-                        odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error
-                        consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus
-                        maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
-                </div><!--Single Scrolling Content-->
-                <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-3">
-                    <h2>This is content here from first heading 3</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum
-                        praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi
-                        reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis
-                        fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio
-                        possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt
-                        excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel
-                        cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum
-                        odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error
-                        consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus
-                        maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
-                </div><!--Single Scrolling Content-->
-                <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-4">
-                    <h2>This is content here from first heading 4</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum
-                        praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi
-                        reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis
-                        fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio
-                        possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt
-                        excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel
-                        cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum
-                        odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error
-                        consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus
-                        maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
-                </div><!--Single Scrolling Content-->
-                <!--Single Scrolling Content-->
-                <div class="cbtse-gostan-scrolling-e-single-content-area" id="content-5">
-                    <h2>This is content here from first heading 5</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum
-                        praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi
-                        reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis
-                        fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio
-                        possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt
-                        excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel
-                        cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum
-                        odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error
-                        consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus
-                        maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, ullam vero blanditiis error ipsum
-                        praesentium reiciendis distinctio commodi vel nihil veritatis, pariatur magni, corrupti sequi
-                        reprehenderit iste eaque quae? Officiis aperiam eius perspiciatis quidem at autem, explicabo veritatis
-                        fuga quam amet aut commodi quas praesentium nisi ab dolore harum recusandae nesciunt molestias vel odio
-                        possimus ad voluptatem velit. Officiis blanditiis esse nisi aliquid nesciunt tenetur saepe sunt
-                        excepturi ducimus, molestias quidem ratione corrupti alias velit incidunt laudantium aspernatur sed vel
-                        cumque. Labore ea corporis aliquam perferendis harum cumque ducimus deleniti culpa ipsum minima, rerum
-                        odio laborum fugiat, nostrum neque ab assumenda esse accusamus impedit? Earum laboriosam error
-                        consequatur dolorem molestiae, amet aliquam dolores cumque aliquid necessitatibus optio temporibus
-                        maxime recusandae harum similique quaerat sapiente? Deleniti odio illum recusandae quisquam atque,</p>
-                </div><!--Single Scrolling Content-->
-            </div>
-        </div>
-        
+        <?php endif; ?>
+
         <script>
 
             jQuery(document).ready(function ($) {
