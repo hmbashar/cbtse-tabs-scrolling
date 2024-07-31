@@ -158,7 +158,7 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
                     '{{WRAPPER}} .cbtse-gostan-scrolling-effect-menu-area ul li a' => 'color: {{VALUE}};',
                 ],
             ]
-        ); 
+        );
 
         $this->add_control(
             'menu_padding',
@@ -172,7 +172,7 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
             ]
         );
 
-        
+
         $this->add_group_control(
             \Elementor\Group_Control_Border::get_type(),
             [
@@ -193,7 +193,7 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
             ]
         );
 
-        
+
 
         $this->end_controls_tab();
 
@@ -241,6 +241,50 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
+
+        $this->end_controls_section();
+
+        // New Content Style Section
+        $this->start_controls_section(
+            'content_style_section',
+            [
+                'label' => __('Content Style', 'cbtse'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'content_border',
+                'label' => __('Border', 'cbtse'),
+                'selector' => '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area',
+            ]
+        );
+
+        $this->add_control(
+            'content_border_radius',
+            [
+                'label' => __('Border Radius', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area' => 'border-radius: {{TOP}} {{RIGHT}} {{BOTTOM}} {{LEFT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'content_padding',
+            [
+                'label' => __('Padding', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area' => 'padding: {{TOP}} {{RIGHT}} {{BOTTOM}} {{LEFT}};',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
     }
