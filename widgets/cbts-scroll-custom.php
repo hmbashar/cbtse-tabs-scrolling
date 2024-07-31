@@ -85,17 +85,16 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Style', 'cbtse'),
             ]
-        );
-        $repeater->add_control(
-            'list_color',
-            [
-                'label' => esc_html__('Color', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}}'
-                ],
-            ]
-        );
+        );    
+        $repeater->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'background',
+				'types' => [ 'classic', 'gradient', 'video' ],
+                'exclude' => ['image'],
+				'selector' => '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area{{CURRENT_ITEM}}',
+			]
+		);
         $repeater->end_controls_tab();
 
         $repeater->end_controls_tabs();
@@ -269,7 +268,7 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area' => 'border-radius: {{TOP}} {{RIGHT}} {{BOTTOM}} {{LEFT}};',
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -281,7 +280,30 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area' => 'padding: {{TOP}} {{RIGHT}} {{BOTTOM}} {{LEFT}};',
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        
+        $this->add_responsive_control(
+            'content_width',
+            [
+                'label' => __('Width', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'px' => [
+                        'min' => 100,
+                        'max' => 2000,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -297,7 +319,7 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
                 <div class="cbtse-gostan-scrolling-effect-menu-area">
                     <ul>
                         <?php foreach ($settings['scrolling_list'] as $index => $item):
-                            $menu_id = 'content-' . ($index + 1);
+                            $menu_id = 'content-' . ($index + 1) . esc_attr($item['_id']);
                             ?>
                             <li><a href="#<?php echo esc_attr($menu_id); ?>"><?php echo esc_html($item['scrolling_title']); ?></a>
                             </li>
@@ -306,12 +328,12 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
                 </div>
                 <div class="cbtse-gostan-scrolling-effect-contents-area">
                     <?php foreach ($settings['scrolling_list'] as $index => $item):
-                        $menu_id = 'content-' . ($index + 1);
+                        $menu_id = 'content-' . ($index + 1) .  esc_attr($item['_id']);
                         $template_id = $item['scrolling_template'];
                         $template_content = $template_id ? \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($template_id) : '';
                         ?>
                         <!-- Single Scrolling Content -->
-                        <div class="cbtse-gostan-scrolling-e-single-content-area" id="<?php echo esc_attr($menu_id); ?>">
+                        <div class="cbtse-gostan-scrolling-e-single-content-area elementor-repeater-item-<?php echo esc_attr($item['_id']); ?>" id="<?php echo esc_attr($menu_id); ?>">
                             <?php if ($template_content) {
                                 echo $template_content;
                             } else { ?>
@@ -371,10 +393,10 @@ class CB_Tabs_Scrolling extends \Elementor\Widget_Base
                     });
 
                     // Adjust container height to accommodate the last item
-                    if (!heightAdjusted && containerScrollTop + containerHeight >= containerScrollHeight - lastItemHeight) {
-                        container.css('height', lastItemHeight + extraHeight + 50 + 'px').css('padding-bottom', 0);
-                        heightAdjusted = false;
-                    }
+                    // if (!heightAdjusted && containerScrollTop + containerHeight >= containerScrollHeight - lastItemHeight) {
+                    //     container.css('height', lastItemHeight + extraHeight + 50 + 'px').css('padding-bottom', 0);
+                    //     heightAdjusted = false;
+                    // }
 
                     // Revert to original height when scrolling back to the top
                     if (heightAdjusted && containerScrollTop + containerHeight < containerScrollHeight - lastItemHeight) {
