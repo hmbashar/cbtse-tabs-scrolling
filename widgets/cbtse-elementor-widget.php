@@ -57,7 +57,14 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
                 'label_block' => true,
             ]
         );
-
+        $repeater->add_control(
+            'scrolling_menu_space',
+            [
+                'label' => esc_html__('Scroll Space', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
 
         // Fetch Elementor templates
         $templates = \Elementor\Plugin::instance()->templates_manager->get_source('local')->get_items();
@@ -78,6 +85,7 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
                 'label_block' => true,
             ]
         );
+
 
         $repeater->end_controls_tab();
         $repeater->start_controls_tab(
@@ -129,82 +137,26 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
             <div class="cbtse_container">
                 <div class="cbtse_content-wrapper">
                     <div class="cbtse_tab-buttons">
-                        <button class="cbtse_tab-button cbtse_tab-button1" type="button">Menu One</button>
-                        <button class="cbtse_tab-button cbtse_tab-button2" type="button">Menu Two</button>
-                        <button class="cbtse_tab-button cbtse_tab-button3" type="button">Menu Three</button>
-                        <button class="cbtse_tab-button cbtse_tab-button4" type="button">Menu Four</button>
+                        <?php foreach ($settings['scrolling_list'] as $index => $item): ?>
+                            <button class="cbtse_tab-button cbtse_tab-button<?php echo esc_attr($item['_id']); ?>" type="button"
+                                data-id="<?php echo esc_attr($item['_id']); ?>"
+                                data-scroll="<?php echo esc_attr($item['scrolling_menu_space']); ?>">
+                                <?php echo esc_html($item['scrolling_title']); ?>
+                            </button>
+                        <?php endforeach; ?>
                     </div>
                     <div class="cbtse_slideup-contents">
-                        <div class="cbtse_slideup-content">
-                            <h2>tab content 1 </h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, fuga illum. Illo neque
-                                expedita ad commodi assumenda reprehenderit voluptate harum voluptatum id. Fugiat, iusto
-                                corrupti molestias, dolore voluptates odit temporibus harum rerum voluptatibus repellat
-                                distinctio. Reiciendis quo quis possimus voluptate ab deleniti provident saepe, enim deserunt
-                                eum unde repudiandae sapiente, quae aliquid error iure sequi in odit, beatae exercitationem
-                                minima facilis? Similique autem, quaerat vitae fuga minus, magni quisquam debitis repellat id,
-                                tenetur beatae quod recusandae delectus dignissimos atque quo est cum necessitatibus molestiae
-                                enim adipisci consequuntur? Illum adipisci molestias iure, vitae deserunt laborum quia nostrum.
-                                Aut, ea, nostrum quo tenetur sed ipsam placeat tempora, quis deleniti alias expedita ab enim
-                                iste voluptate voluptatem. Temporibus incidunt vitae sint porro, totam sunt! Laborum sapiente
-                                porro accusantium doloribus molestias rerum voluptatibus soluta quisquam animi aliquam! Corrupti
-                                ab amet ad? Dolor possimus quaerat doloribus provident voluptate delectus autem numquam qui quo
-                                odit! Qui assumenda earum doloremque voluptatum reiciendis, cum facilis veniam optio recusandae
-                                sint dignissimos in, aut impedit sequi cumque odio ipsum fuga animi atque id eveniet beatae
-                                unde. Esse harum, est ducimus magni, quidem cupiditate nobis</p>
-                        </div>
-                        <div class="cbtse_slideup-content">
-                            <h2>Tab content 2</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores impedit sit, dicta
-                                recusandae voluptatibus ullam quia odit at vero quasi eos nisi minima officiis! Nostrum, facere
-                                blanditiis nobis enim nemo impedit modi, temporibus magnam culpa nulla nam illum corrupti
-                                numquam odio est laboriosam, recusandae adipisci alias itaque quia quisquam at fugiat sint.
-                                Officiis, soluta aliquam repudiandae dolorum ullam laboriosam expedita ex cum perferendis esse
-                                temporibus eligendi commodi ratione minus et nulla nesciunt consequuntur voluptatibus quia
-                                distinctio sed recusandae. Ducimus accusantium minima sint, eum numquam unde voluptates. Aperiam
-                                eveniet praesentium laborum! Nulla repudiandae rerum obcaecati fuga, ducimus enim vitae quasi
-                                asperiores, aperiam dolor laboriosam unde eveniet accusantium pariatur, eligendi ipsa
-                                cupiditate! Quam voluptatem autem harum tempora est ducimus, ratione dolor nostrum similique
-                                omnis quaerat fugit ipsam molestias consectetur</p>
-                        </div>
-                        <div class="cbtse_slideup-content">
-                            <h2>Tab content 3</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam iste sed id dolore repudiandae?
-                                Illo hic eius nihil molestias officia magni distinctio praesentium tempore, magnam, illum
-                                molestiae accusantium laboriosam adipisci placeat a dolore. Sapiente amet asperiores officia
-                                illum ullam architecto similique placeat, minima tempore expedita reprehenderit neque tenetur
-                                nam provident ea iure accusamus cum voluptates perspiciatis numquam? Optio culpa maxime
-                                temporibus debitis, id velit repellat eos labore, soluta ex cumque ipsam quibusdam quasi.
-                                Laboriosam consectetur ex quod facilis voluptatum cupiditate totam doloremque, minus
-                                perferendis, et, illum laborum a optio quaerat veritatis iste animi sequi nam perspiciatis
-                                delectus doloribus ea magnam voluptate! Ratione exercitationem accusamus quae numquam nesciunt?
-                                Laboriosam pariatur, deleniti quam culpa praesentium cupiditate impedit itaque amet ab iure
-                                aliquam dignissimos quod incidunt architecto molestias voluptatem. Recusandae, est eum!
-                                Recusandae molestiae culpa, ab sint ipsum dolorem sapiente maxime perspiciatis nulla! Dolores
-                                fuga nesciunt laboriosam sunt eaque. Aliquid recusandae natus tenetur optio quos ullam atque
-                                eaque, possimus reprehenderit officia enim vitae nostrum fuga expedita ipsa saepe, explicabo
-                                sapiente. Impedit quisquam doloremque quis reiciendis corporis, tempore soluta perferendis eius
-                                est beatae modi labore! Facere eveniet dolorem,</p>
-                        </div>
-                        <div class="cbtse_slideup-content">
-                            <h2>Tab Content 3</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ratione velit laborum dolorem quae
-                                pariatur id aspernatur. Temporibus nulla eaque, ratione id officiis odit nostrum, doloremque
-                                laudantium tempora enim distinctio aliquid non illum, quod voluptatibus! Distinctio beatae,
-                                nesciunt illo voluptatem nemo unde earum voluptatibus alias velit magnam! Cumque deserunt
-                                nostrum nisi harum. Ab vel eos eius odio inventore accusantium maiores nam, commodi tenetur
-                                facere quod adipisci earum distinctio id consequuntur quis veniam? Mollitia illum fugiat ratione
-                                dolorum saepe! Aliquam nobis, minus ex illo et ducimus vel repudiandae voluptates iusto aliquid
-                                corrupti sequi inventore rerum sunt dolor perspiciatis! Amet illo rem atque in autem
-                                exercitationem perferendis, officia id aspernatur! Rerum itaque adipisci earum amet, in eos quae
-                                suscipit perferendis odit? Praesentium voluptatum adipisci hic tempora at dolor fuga? Non
-                                ratione maiores exercitationem dolorem temporibus inventore eaque alias debitis minima?
-                                Voluptatibus doloremque commodi, ut, id laboriosam, voluptates adipisci mollitia est a dolorum
-                                vero cupiditate sed? Et minima facere beatae illo eaque ipsum laudantium doloremque,
-                                perspiciatis eum incidunt quod est molestias non delectus quis reprehenderit quasi quos eveniet?
-                                Officia, tempore debitis? Provident optio facere molestiae et ea qui ad, nulla ducimus autem
-                                debitis! Omnis illum voluptates voluptas nemo ad,</p>
-                        </div>
+                        <?php foreach ($settings['scrolling_list'] as $index => $item): ?>
+                            <div class="cbtse_slideup-content elementor-repeater-item-<?php echo esc_attr($item['_id']); ?>">
+                                <?php
+                                if (!empty($item['scrolling_template'])) {
+                                    echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display($item['scrolling_template']);
+                                } else {
+                                    echo '<p>No template selected.</p>';
+                                }
+                                ?>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
@@ -304,35 +256,19 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
                     },
                     "-=1"
                 );
-
                 // Tab buttons
-                jQuery(".cbtse_tab-button1").click(function () {
+                jQuery(".cbtse_tab-button").click(function () {
+                    var scrollSpace = jQuery(this).data('scroll');
                     jQuery('html, body').animate({
-                        scrollTop: 0
+                        scrollTop: scrollSpace
                     }, 500);
                 });
 
-                jQuery(".cbtse_tab-button2").click(function () {
-                    jQuery('html, body').animate({
-                        scrollTop: 1100
-                    }, 500);
-                });
 
-                jQuery(".cbtse_tab-button3").click(function () {
-                    jQuery('html, body').animate({
-                        scrollTop: 2250
-                    }, 500);
-                });
-
-                jQuery(".cbtse_tab-button4").click(function () {
-                    jQuery('html, body').animate({
-                        scrollTop: 4500
-                    }, 500);
-                });
             }
         </script>
-
         <?php
     }
+
 
 }
