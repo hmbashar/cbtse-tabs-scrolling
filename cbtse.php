@@ -16,6 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+
+if (!defined('CB_TABS_DIR_URL')) {
+	define('CB_TABS_DIR_URL', plugin_dir_url(__FILE__));
+}
+
 // Main CB Tabs with Scrolling Effect Class
 class CB_Tabs_Scrolling_Effect {
 
@@ -32,14 +37,13 @@ class CB_Tabs_Scrolling_Effect {
         wp_enqueue_style( 'cbtse-style', plugin_dir_url( __FILE__ ) . 'assets/css/style.css' );
 
      // Enqueue GSAP and related scripts
-     wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js', array('jquery'), '3.7.1', true );
-     wp_enqueue_script( 'cbtse-gsap-latest', plugin_dir_url( __FILE__ ) . 'assets/js/gsap-latest-beta.min.js', array('gsap'), '3.7.1', true );
-     wp_enqueue_script( 'cbtse-scroll-smoother', plugin_dir_url( __FILE__ ) . 'assets/js/ScrollSmoother.min.js', array('gsap'), '3.7.1', true );
-     wp_enqueue_script( 'cbtse-scroll-to-plugin', plugin_dir_url( __FILE__ ) . 'assets/js/ScrollToPlugin.min.js', array('gsap'), '3.7.1', true );
-     wp_enqueue_script( 'cbtse-scroll-trigger', plugin_dir_url( __FILE__ ) . 'assets/js/ScrollTrigger.min.js', array('gsap'), '3.7.1', true );
+     //wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js', array('jquery'), '3.7.1', true );
+     //wp_enqueue_script( 'cbtse-gsap-latest', plugin_dir_url( __FILE__ ) . 'assets/js/gsap-latest-beta.min.js', array('jquery'), '3.7.1', true );
+     //wp_enqueue_script( 'cbtse-scroll-to-plugin', plugin_dir_url( __FILE__ ) . 'assets/js/ScrollToPlugin.min.js', array('jquery'), '3.7.1', true );
+     //wp_enqueue_script( 'cbtse-scroll-trigger', plugin_dir_url( __FILE__ ) . 'assets/js/ScrollTrigger.min.js', array('jquery'), '3.7.1', true );
 
         // Enqueue custom script
-       // wp_enqueue_script( 'cbtse-script', plugin_dir_url( __FILE__ ) . 'assets/js/script.js', array( 'jquery', 'cbtse-gsap-latest', 'cbtse-scroll-smoother', 'cbtse-scroll-to-plugin', 'cbtse-scroll-trigger' ), '1.0', false );
+       //wp_enqueue_script( 'cbtse-script', plugin_dir_url( __FILE__ ) . 'assets/js/script.js', array( 'jquery', 'cbtse-gsap-latest', 'cbtse-scroll-smoother', 'cbtse-scroll-to-plugin', 'cbtse-scroll-trigger' ), '1.0', false );
     }
 
     // Load text domain for translations
