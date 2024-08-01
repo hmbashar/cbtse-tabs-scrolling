@@ -13,7 +13,7 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('CB Tabs with Scrolling Effect', 'cbtse');
+        return __('CB Tabs GSAP', 'cbtse');
     }
 
     public function get_icon()
@@ -57,14 +57,14 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
                 'label_block' => true,
             ]
         );
-        $repeater->add_control(
-            'scrolling_menu_space',
-            [
-                'label' => esc_html__('Scroll Space', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'label_block' => true,
-            ]
-        );
+        // $repeater->add_control(
+        //     'scrolling_menu_space',
+        //     [
+        //         'label' => esc_html__('Scroll Space', 'cbtse'),
+        //         'type' => \Elementor\Controls_Manager::TEXT,
+        //         'label_block' => true,
+        //     ]
+        // );
 
         // Fetch Elementor templates
         $templates = \Elementor\Plugin::instance()->templates_manager->get_source('local')->get_items();
@@ -127,6 +127,127 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'menu_style_section',
+            [
+                'label' => __('Menu Style', 'cbtse'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->start_controls_tabs('menu_style_tabs');
+
+        $this->start_controls_tab(
+            'menu_normal_tab',
+            [
+                'label' => __('Normal', 'cbtse'),
+            ]
+        );
+
+        $this->add_control(
+            'menu_background_color',
+            [
+                'label' => __('Background Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_text_color',
+            [
+                'label' => __('Text Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_padding',
+            [
+                'label' => __('Padding', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'menu_border',
+                'selector' => '{{WRAPPER}} button.cbtse_tab-button',
+            ]
+        );
+
+        $this->add_control(
+            'menu_border_radius',
+            [
+                'label' => __('Border Radius', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'menu_hover_tab',
+            [
+                'label' => __('Hover', 'cbtse'),
+            ]
+        );
+
+        $this->add_control(
+            'menu_hover_background_color',
+            [
+                'label' => __('Background Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_hover_text_color',
+            [
+                'label' => __('Hover Text Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'menu_hover_border_color',
+            [
+                'label' => __('Hover Border Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section();
     }
 
     protected function render()
@@ -139,8 +260,7 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
                     <div class="cbtse_tab-buttons">
                         <?php foreach ($settings['scrolling_list'] as $index => $item): ?>
                             <button class="cbtse_tab-button cbtse_tab-button<?php echo esc_attr($item['_id']); ?>" type="button"
-                                data-id="<?php echo esc_attr($item['_id']); ?>"
-                                data-scroll="<?php echo esc_attr($item['scrolling_menu_space']); ?>">
+                                data-id="<?php echo esc_attr($item['_id']); ?>">
                                 <?php echo esc_html($item['scrolling_title']); ?>
                             </button>
                         <?php endforeach; ?>
@@ -258,12 +378,12 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
                 );
                 // Tab buttons
                 jQuery(".cbtse_tab-button").click(function () {
-                    var scrollSpace = jQuery(this).data('scroll');
+                    var targetId = jQuery(this).data('id');
+                    var targetOffset = jQuery('.elementor-repeater-item-' + targetId).offset().top;
                     jQuery('html, body').animate({
-                        scrollTop: scrollSpace
+                        scrollTop: targetOffset
                     }, 500);
                 });
-
 
             }
         </script>

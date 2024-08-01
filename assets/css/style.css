@@ -1,21 +1,26 @@
 .cbtse_tab-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom: 20px;
+  gap: 30px;
+  position: sticky;
+  top: 0;
 }
-.cbtse_tab-button {
+button.cbtse_tab-button {
   padding: 10px 20px;
   cursor: pointer;
+  background-color:#3a1952;
+  color: #fff;
+  border: none;
 }
 .cbtse_slideup-contents {
   position: relative;
 }
 
 #cbtse_slideup-content-wrapper {
- background-color: aliceblue;
-height: 100vh;
-display: flex;
-align-items: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
 .cbtse_container {
   padding: 0 15px;
@@ -32,15 +37,11 @@ align-items: center;
   background-color: aqua;
 }
 .cbtse_slideup-content:nth-child(3) {
-  background-color:rgb(255, 36, 149);
+  background-color: rgb(255, 36, 149);
 }
 .cbtse_slideup-content:nth-child(4) {
-  background-color:rgb(255, 169, 40);
+  background-color: rgb(255, 169, 40);
 }
-
-
-
-
 
 .cbtse-gostan-scrolling-effect-menu-area ul {
   display: flex;
@@ -65,51 +66,50 @@ align-items: center;
   border-radius: 5px;
 }
 .cbtse-gostan-scrolling-effect-contents-area * {
-    color: #fff;
+  color: #fff;
 }
 
 .cbtse-gostan-scrolling-effect-contents-area {
-    position: relative;
-    overflow-y: scroll; /* Use scroll to enable scrolling without showing scrollbar */
-    height: calc(100vh - 50px);
-    padding-bottom: 100px; /* Initial padding */
+  position: relative;
+  overflow-y: scroll; /* Use scroll to enable scrolling without showing scrollbar */
+  height: calc(100vh - 50px);
+  padding-bottom: 100px; /* Initial padding */
 }
 
 /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
 .cbtse-gostan-scrolling-effect-contents-area::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .cbtse-gostan-scrolling-effect-contents-area {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .cbtse-gostan-scrolling-e-single-content-area {
-    background-color: #FECE32;
-    padding: 30px;
-    border-radius: 50px;
-    margin-bottom: 50px;    
-    position: relative;
-    transition: z-index 0.3s ease;
-    z-index: 1;
+  background-color: #fece32;
+  padding: 30px;
+  border-radius: 50px;
+  margin-bottom: 50px;
+  position: relative;
+  transition: z-index 0.3s ease;
+  z-index: 1;
 }
 
 .cbtse-gostan-scrolling-e-single-content-area:nth-child(2) {
-    background-color: #FEAF77;
+  background-color: #feaf77;
 }
 .cbtse-gostan-scrolling-e-single-content-area:nth-child(3) {
-    background-color: #92ABFC;
+  background-color: #92abfc;
 }
 .cbtse-gostan-scrolling-e-single-content-area:nth-child(4) {
-    background-color: #BA80E6;
+  background-color: #ba80e6;
 }
 .cbtse-gostan-scrolling-e-single-content-area:nth-child(5) {
-    background-color: #3A1952;
+  background-color: #3a1952;
 }
 
 .cbtse-gostan-position-fixed {
-    position: sticky;
+  position: sticky;
 }
-
