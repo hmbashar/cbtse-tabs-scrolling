@@ -4,7 +4,10 @@
   margin-bottom: 20px;
   gap: 30px;
   position: sticky;
-  top: 0;
+  top: 40px;
+  z-index: 99;
+  background-color: #666;
+  padding: 30px;
 }
 button.cbtse_tab-button {
   padding: 10px 20px;
@@ -112,4 +115,10 @@ button.cbtse_tab-button {
 
 .cbtse-gostan-position-fixed {
   position: sticky;
+}
+
+
+.cbtse_tab-button.active {
+  background-color: green;
+  color:#fff;
 }

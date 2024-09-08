@@ -5,7 +5,6 @@ if (!defined('ABSPATH')) {
 
 class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
 {
-
     public function get_name()
     {
         return 'cbtse_tabs_scrolling_effect';
@@ -37,9 +36,7 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
         );
         $repeater = new \Elementor\Repeater();
 
-        $repeater->start_controls_tabs(
-            'scrolling_tabs'
-        );
+        $repeater->start_controls_tabs('scrolling_tabs');
 
         $repeater->start_controls_tab(
             'scrolling_normal_tab',
@@ -57,14 +54,6 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
                 'label_block' => true,
             ]
         );
-        // $repeater->add_control(
-        //     'scrolling_menu_space',
-        //     [
-        //         'label' => esc_html__('Scroll Space', 'cbtse'),
-        //         'type' => \Elementor\Controls_Manager::TEXT,
-        //         'label_block' => true,
-        //     ]
-        // );
 
         // Fetch Elementor templates
         $templates = \Elementor\Plugin::instance()->templates_manager->get_source('local')->get_items();
@@ -86,27 +75,8 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
             ]
         );
 
-
         $repeater->end_controls_tab();
-        $repeater->start_controls_tab(
-            'scrolling_style_tab',
-            [
-                'label' => esc_html__('Style', 'cbtse'),
-            ]
-        );
-        $repeater->add_group_control(
-            \Elementor\Group_Control_Background::get_type(),
-            [
-                'name' => 'background',
-                'types' => ['classic', 'gradient', 'video'],
-                'exclude' => ['image'],
-                'selector' => '{{WRAPPER}} .cbtse-gostan-scrolling-e-single-content-area{{CURRENT_ITEM}}',
-            ]
-        );
-        $repeater->end_controls_tab();
-
         $repeater->end_controls_tabs();
-
 
         $this->add_control(
             'scrolling_list',
@@ -125,127 +95,6 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
                 'title_field' => '{{{ scrolling_title }}}',
             ]
         );
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'menu_style_section',
-            [
-                'label' => __('Menu Style', 'cbtse'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->start_controls_tabs('menu_style_tabs');
-
-        $this->start_controls_tab(
-            'menu_normal_tab',
-            [
-                'label' => __('Normal', 'cbtse'),
-            ]
-        );
-
-        $this->add_control(
-            'menu_background_color',
-            [
-                'label' => __('Background Color', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} button.cbtse_tab-button' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'menu_text_color',
-            [
-                'label' => __('Text Color', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} button.cbtse_tab-button' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'menu_padding',
-            [
-                'label' => __('Padding', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} button.cbtse_tab-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Border::get_type(),
-            [
-                'name' => 'menu_border',
-                'selector' => '{{WRAPPER}} button.cbtse_tab-button',
-            ]
-        );
-
-        $this->add_control(
-            'menu_border_radius',
-            [
-                'label' => __('Border Radius', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} button.cbtse_tab-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'menu_hover_tab',
-            [
-                'label' => __('Hover', 'cbtse'),
-            ]
-        );
-
-        $this->add_control(
-            'menu_hover_background_color',
-            [
-                'label' => __('Background Color', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'menu_hover_text_color',
-            [
-                'label' => __('Hover Text Color', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-
-        $this->add_control(
-            'menu_hover_border_color',
-            [
-                'label' => __('Hover Border Color', 'cbtse'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
 
         $this->end_controls_section();
     }
@@ -287,108 +136,69 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
         <script src="<?php echo CB_TABS_DIR_URL; ?>assets/js/ScrollToPlugin.min.js"></script>
         <script src="<?php echo CB_TABS_DIR_URL; ?>assets/js/ScrollTrigger.min.js"></script>
         <script>
-            // GSAP Smooth scroll
-            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-            // Slideup Section
-            if (jQuery("#cbtse_slideup-content-wrapper").length !== 0) {
+            jQuery(document).ready(function($) {
+                gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+                const sections = gsap.utils.toArray(".cbtse_slideup-content");
+                const buttons = gsap.utils.toArray(".cbtse_tab-button");
+
+                // Create a timeline for the scrolling effects
                 const slideupSection = gsap.timeline({
                     scrollTrigger: {
                         trigger: "#cbtse_slideup-content-wrapper",
                         start: "top top",
-                        end: "+=" + jQuery(window).height() * 4,
+                        end: "+=" + $(window).height() * sections.length,
                         scrub: 1,
                         pin: true,
-                    },
-                });
-                gsap.set(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:not(:first-child)",
-                    {
-                        y: "100vh",
                     }
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(2)",
-                    {
-                        y: "35px",
-                        delay: 0.5,
-                        duration: 1,
-                    }
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(1)",
-                    {
-                        scale: 0.95,
-                        delay: 0,
-                        duration: 0.5,
-                    },
-                    "-=1"
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(3)",
-                    {
-                        y: "70px",
-                        delay: 0.5,
-                        duration: 1,
-                    }
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(1)",
-                    {
-                        scale: 0.9,
-                        delay: 0.5,
-                    },
-                    "-=1"
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(2)",
-                    {
-                        scale: 0.95,
-                        delay: 0.5,
-                    },
-                    "-=1"
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(4)",
-                    {
-                        y: "105px",
-                        duration: 1,
-                    },
-                    "+=1"
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(1)",
-                    {
-                        scale: 0.85,
-                    },
-                    "-=1"
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(2)",
-                    {
-                        scale: 0.9,
-                    },
-                    "-=1"
-                );
-                slideupSection.to(
-                    "#cbtse_slideup-content-wrapper .cbtse_slideup-content:nth-child(3)",
-                    {
-                        scale: 0.95,
-                    },
-                    "-=1"
-                );
-                // Tab buttons
-                jQuery(".cbtse_tab-button").click(function () {
-                    var targetId = jQuery(this).data('id');
-                    var targetOffset = jQuery('.elementor-repeater-item-' + targetId).offset().top;
-                    jQuery('html, body').animate({
-                        scrollTop: targetOffset
-                    }, 500);
                 });
 
-            }
+                // Set initial Y position for all but the first section
+                gsap.set(sections.slice(1), { y: "100vh" });
+
+                // GSAP scroll animation between sections
+                sections.forEach((section, index) => {
+                    if (index > 0) {
+                        slideupSection.to(section, { y: "0vh", duration: 1 }, `-=${0.5}`);
+                    }
+                });
+
+                // Function to handle which button is active
+                function setActiveButton(index) {
+                    buttons.forEach((button, i) => {
+                        if (i === index) {
+                            button.classList.add('active');
+                        } else {
+                            button.classList.remove('active');
+                        }
+                    });
+                }
+
+                // ScrollTrigger to detect the most visible section and set the active button accordingly
+                ScrollTrigger.create({
+                    trigger: "#cbtse_slideup-content-wrapper",
+                    start: "top top",
+                    end: "+=" + $(window).height() * sections.length,
+                    onUpdate: (self) => {
+                        const activeIndex = Math.round(self.progress * (sections.length - 1));
+                        setActiveButton(activeIndex);
+                    }
+                });
+
+                // Button click event to scroll to respective section
+                buttons.forEach((button, index) => {
+                    button.addEventListener('click', function () {
+                        gsap.to(window, {
+                            scrollTo: {
+                                y: sections[index],
+                                autoKill: false
+                            },
+                            duration: 1
+                        });
+                    });
+                });
+            });
         </script>
         <?php
     }
-
-
 }
