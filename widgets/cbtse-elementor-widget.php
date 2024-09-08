@@ -97,6 +97,160 @@ class CB_Tabs_Scrolling_Effect_Widget extends \Elementor\Widget_Base
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'menu_style_section',
+            [
+                'label' => __('Menu Style', 'cbtse'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->start_controls_tabs('menu_style_tabs');
+
+        $this->start_controls_tab(
+            'menu_normal_tab',
+            [
+                'label' => __('Normal', 'cbtse'),
+            ]
+        );
+
+        $this->add_control(
+            'menu_background_color',
+            [
+                'label' => __('Background Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_text_color',
+            [
+                'label' => __('Text Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_padding',
+            [
+                'label' => __('Padding', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'menu_border',
+                'selector' => '{{WRAPPER}} button.cbtse_tab-button',
+            ]
+        );
+
+        $this->add_control(
+            'menu_border_radius',
+            [
+                'label' => __('Border Radius', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'menu_hover_tab',
+            [
+                'label' => __('Hover', 'cbtse'),
+            ]
+        );
+
+        $this->add_control(
+            'menu_hover_background_color',
+            [
+                'label' => __('Background Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_hover_text_color',
+            [
+                'label' => __('Hover Text Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'menu_hover_border_color',
+            [
+                'label' => __('Hover Border Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+        
+        $this->start_controls_tab(
+            'menu_active_tab',
+            [
+                'label' => __('Active', 'cbtse'),
+            ]
+        );
+
+        $this->add_control(
+            'menu_active_bg_color',
+            [
+                'label' => __('Background Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button.active' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'menu_active_text_color',
+            [
+                'label' => __('Text Color', 'cbtse'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} button.cbtse_tab-button.active' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        
+        $this->end_controls_tab();
+
+
+        $this->end_controls_tabs();
+
+        $this->end_controls_section(); 
     }
 
     protected function render()

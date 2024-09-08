@@ -119,6 +119,6 @@ button.cbtse_tab-button {
 
 
 .cbtse_tab-button.active {
-  background-color: green;
+  background-color: #FFA43A;
   color:#fff;
 }
